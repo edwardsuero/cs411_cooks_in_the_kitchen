@@ -1,12 +1,10 @@
 const express = require('express')
 const app = express()
-const { Pool, Client } = require('pg')
-const pool = new Pool({
-  host: 'localhost',
-  user: 'root',
-});
+const { Pool } = require('pg')
+const pool = new Pool();
 
 app.get('/api', (req, res) => res.send('Welcome to the Cooks in the Kitchen Rest API'));
+
 app.get('/api/system', (req, res) => {
     pool.connect()
       .then(client => {
